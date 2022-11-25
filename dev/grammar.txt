@@ -1,0 +1,12 @@
+S -> E .
+S -> V = E .
+E -> E + T .
+T -> T * F .
+F -> ( E ) .
+E -> E - T .
+E -> T .
+T -> T / F .
+T -> F .
+F -> V .
+V -> id .
+F -> num .
