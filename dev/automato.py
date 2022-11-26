@@ -201,7 +201,7 @@ class Automata:
     elif self.transition == '*':
       pass
     elif self.transition == '(':
-      pass
+      self.shifter(7)
     elif self.transition == ')':
       pass
     elif self.transition == '-':
@@ -209,9 +209,9 @@ class Automata:
     elif self.transition == '/':
       pass
     elif self.transition == 'id':
-      pass
+      self.shifter(5)
     elif self.transition == 'num':
-      pass
+      self.shifter(8)
     elif self.transition == '$':
       pass
 
@@ -219,23 +219,23 @@ class Automata:
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      pass
+      self.reducer('f -> num')
     elif self.transition == '*':
-      pass
+      self.reducer('f -> num')
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      pass
+      self.reducer('f -> num')
     elif self.transition == '-':
-      pass
+      self.reducer('f -> num')
     elif self.transition == '/':
-      pass
+      self.reducer('f -> num')
     elif self.transition == 'id':
       pass
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      pass
+      self.reducer('f -> num')
 
   def state9(self):
     if self.transition == '=':
@@ -245,7 +245,7 @@ class Automata:
     elif self.transition == '*':
       pass
     elif self.transition == '(':
-      pass
+      self.shifter(7)
     elif self.transition == ')':
       pass
     elif self.transition == '-':
@@ -253,9 +253,9 @@ class Automata:
     elif self.transition == '/':
       pass
     elif self.transition == 'id':
-      pass
+      self.shifter(5)
     elif self.transition == 'num':
-      pass
+      self.shifter(8)
     elif self.transition == '$':
       pass
 
@@ -267,7 +267,7 @@ class Automata:
     elif self.transition == '*':
       pass
     elif self.transition == '(':
-      pass
+      self.shifter(7)
     elif self.transition == ')':
       pass
     elif self.transition == '-':
@@ -275,9 +275,9 @@ class Automata:
     elif self.transition == '/':
       pass
     elif self.transition == 'id':
-      pass
+      self.shifter(5)
     elif self.transition == 'num':
-      pass
+      self.shifter(8)
     elif self.transition == '$':
       pass
 
@@ -289,7 +289,7 @@ class Automata:
     elif self.transition == '*':
       pass
     elif self.transition == '(':
-      pass
+      self.shifter(7)
     elif self.transition == ')':
       pass
     elif self.transition == '-':
@@ -297,9 +297,9 @@ class Automata:
     elif self.transition == '/':
       pass
     elif self.transition == 'id':
-      pass
+      self.shifter(5)
     elif self.transition == 'num':
-      pass
+      self.shifter(8)
     elif self.transition == '$':
       pass
 
@@ -311,7 +311,7 @@ class Automata:
     elif self.transition == '*':
       pass
     elif self.transition == '(':
-      pass
+      self.shifter(7)
     elif self.transition == ')':
       pass
     elif self.transition == '-':
@@ -319,9 +319,9 @@ class Automata:
     elif self.transition == '/':
       pass
     elif self.transition == 'id':
-      pass
+      self.shifter(5)
     elif self.transition == 'num':
-      pass
+      self.shifter(8)
     elif self.transition == '$':
       pass
 
@@ -333,7 +333,7 @@ class Automata:
     elif self.transition == '*':
       pass
     elif self.transition == '(':
-      pass
+      self.shifter(7)
     elif self.transition == ')':
       pass
     elif self.transition == '-':
@@ -341,9 +341,9 @@ class Automata:
     elif self.transition == '/':
       pass
     elif self.transition == 'id':
-      pass
+      self.shifter(5)
     elif self.transition == 'num':
-      pass
+      self.shifter(8)
     elif self.transition == '$':
       pass
 
@@ -351,15 +351,15 @@ class Automata:
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      pass
+      self.shifter(9)
     elif self.transition == '*':
       pass
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      pass
+      self.shifter(21)
     elif self.transition == '-':
-      pass
+      self.shifter(10)
     elif self.transition == '/':
       pass
     elif self.transition == 'id':
@@ -373,73 +373,73 @@ class Automata:
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      pass
+      self.reducer("F -> V")
     elif self.transition == '*':
-      pass
+      self.reducer("F -> V")
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      pass
+      self.reducer("F -> V")
     elif self.transition == '-':
-      pass
+      self.reducer("F -> V")
     elif self.transition == '/':
-      pass
+      self.reducer("F -> V")
     elif self.transition == 'id':
       pass
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      pass
+      self.reducer("F -> V")
 
   def state16(self):
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      pass
+      self.reducer("E -> E+T")
     elif self.transition == '*':
-      pass
+      self.shifter(12)
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      pass
+      self.reducer("E -> E+T")
     elif self.transition == '-':
-      pass
+      self.reducer("E -> E+T")
     elif self.transition == '/':
-      pass
+      self.shifter(13)
     elif self.transition == 'id':
       pass
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      pass
+      self.reducer("E -> E+T")
 
   def state17(self):
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      pass
+      self.reducer("E -> E-T")
     elif self.transition == '*':
-      pass
+      self.shifter(12)
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      pass
+      self.reducer("E -> E-T")
     elif self.transition == '-':
-      pass
+      self.reducer("E -> E-T")
     elif self.transition == '/':
-      pass
+      self.shifter(12)
     elif self.transition == 'id':
       pass
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      pass
+      self.reducer("E -> E-T")
 
   def state18(self):
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      pass
+      self.shifter(9)
     elif self.transition == '*':
       pass
     elif self.transition == '(':
@@ -447,7 +447,7 @@ class Automata:
     elif self.transition == ')':
       pass
     elif self.transition == '-':
-      pass
+      self.shifter(9)
     elif self.transition == '/':
       pass
     elif self.transition == 'id':
@@ -455,73 +455,73 @@ class Automata:
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      pass
+      self.reducer("S -> V=E")
 
   def state19(self):
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      pass
+      self.reducer("T -> T*F")
     elif self.transition == '*':
-      pass
+      self.reducer("T -> T*F")
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      pass
+      self.reducer("T -> T*F")
     elif self.transition == '-':
-      pass
+      self.reducer("T -> T*F")
     elif self.transition == '/':
-      pass
+      self.reducer("T -> T*F")
     elif self.transition == 'id':
       pass
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      pass
+      self.reducer("T -> T*F")
 
   def state20(self):
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      pass
+      self.reducer("T -> T/F")
     elif self.transition == '*':
-      pass
+      self.reducer("T -> T/F")
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      pass
+      self.reducer("T -> T/F")
     elif self.transition == '-':
-      pass
+      self.reducer("T -> T/F")
     elif self.transition == '/':
-      pass
+      self.reducer("T -> T/F")
     elif self.transition == 'id':
       pass
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      pass
+      self.reducer("T -> T/F")
 
   def state21(self):
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      pass
+      self.reducer("F -> (E)")
     elif self.transition == '*':
-      pass
+      self.reducer("F -> (E)")
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      pass
+      self.reducer("F -> (E)")
     elif self.transition == '-':
-      pass
+      self.reducer("F -> (E)")
     elif self.transition == '/':
-      pass
+      self.reducer("F -> (E)")
     elif self.transition == 'id':
       pass
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      pass
+      self.reducer("F -> (E)")
 
 
 terminais = ["num", "id", "+", "-", "*", "/", "=", "(", ")"]
