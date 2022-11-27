@@ -5,40 +5,57 @@
 #  A pilha está vazia no início do processo e conterá o símbolo inicial ao final se bem sucedida.
 
 class Automata:
-  transition: str = ''
-  currentStates: set = {'q0'}
+  transition: chr = ''
+  stack  = []
+  currentStates: set = {}
   nextStates: set = set()
-  stack: str = ''
-  posicaoFita: int = 0
   fita: str
+  posicaoFita: int = 0
+  lastAct: str = ''
 
   def __init__(self, fita:str):
       self.fita = fita.split()
+      self.fita.append('$')
+      # self.fita =list( map(lambda x: x.replace(" ", ""), tmp))
 
   def goto(self,to):
-      self.nextStates.add(to)
-      self.posicaoFita+=1
+    self.lastAct = "goto"
+    self.nextStates.add(to)
+    self.posicaoFita+=1
 
   def shifter(self,to:int):
-      self.nextStates.add(f"state{to}")
-      self.posicaoFita+=1
-      self.stack = self.stack+self.transition
+    self.lastAct = "shift"
+    self.nextStates.add(f"state{to}")
+    self.posicaoFita+=1
+    self.stack.append(self.transition)
 
   def reducer(self,to: str):
-      aux = to.split()
-      b = aux[0]
-      c = aux[2]
-      if self.stack.endswith(c):
-        self.stack = self.stack[:-len(c)]
-        self.stack = self.stack+b
-        self.nextStates.add('state0')
-      else:
-        print("NÃO OK")
-      print(f"REDUCE: {aux}, b:{b} c:{c}")
+    self.lastAct = "reduce"
+    aux = to.split()
+    b = aux[0]
+    c = aux[2]
+    self.flagB = False
+    if self.stack[-1] == c:
+      self.stack = self.stack[:-len(c)]
+      self.stack.append(b)
+      self.nextStates.add('state0')
+    else:
+      print("NÃO OK")
 
 
   def state0(self):
-    if self.transition == '=':
+    if self.lastAct == "reduce":
+      if self.stack[-1] == 'S':
+        self.state1()
+      elif self.stack[-1] == 'E':
+        self.state2()
+      elif self.stack[-1] == 'V':
+        self.state3()
+      elif self.stack[-1] == 'T':
+        self.state4()
+      elif self.stack[-1] == 'F':
+        self.state6()
+    elif self.transition == '=':
       pass
     elif self.transition == '+':
       pass
@@ -57,17 +74,7 @@ class Automata:
     elif self.transition == 'num':
       self.shifter(8)
     elif self.transition == '$':
-      self.goto("state1")
-    elif self.transition == 'S':
-      self.goto("state2")
-    elif self.transition == 'E':
-      self.goto("state3")
-    elif self.transition == 'V':
-      self.goto("state4")
-    elif self.transition == 'T':
-      self.goto("state5")
-    elif self.transition == 'F':
-      self.goto("state6")
+      pass
 
   def state1(self):
     if self.transition == '=':
@@ -202,7 +209,18 @@ class Automata:
       self.reducer('T -> F')
 
   def state7(self):
-    if self.transition == '=':
+    if self.lastAct == "reduce":
+      if self.stack[-1] == 'S':
+        pass
+      elif self.stack[-1] == 'E':
+        self.state14()
+      elif self.stack[-1] == 'V':
+        self.state15()
+      elif self.stack[-1] == 'T':
+        self.state4()
+      elif self.stack[-1] == 'F':
+        self.state6()
+    elif self.transition == '=':
       pass
     elif self.transition == '+':
       pass
@@ -235,26 +253,37 @@ class Automata:
     if self.transition == '=':
       pass
     elif self.transition == '+':
-      self.reducer('f -> num')
+      self.reducer('F -> num')
     elif self.transition == '*':
-      self.reducer('f -> num')
+      self.reducer('F -> num')
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      self.reducer('f -> num')
+      self.reducer('F -> num')
     elif self.transition == '-':
-      self.reducer('f -> num')
+      self.reducer('F -> num')
     elif self.transition == '/':
-      self.reducer('f -> num')
+      self.reducer('F -> num')
     elif self.transition == 'id':
       pass
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      self.reducer('f -> num')
+      self.reducer('F -> num')
 
   def state9(self):
-    if self.transition == '=':
+    if self.lastAct == "reduce":
+      if self.stack[-1] == 'S':
+        pass
+      elif self.stack[-1] == 'E':
+        pass
+      elif self.stack[-1] == 'V':
+        self.state15()
+      elif self.stack[-1] == 'T':
+        self.state16()
+      elif self.stack[-1] == 'F':
+        self.state6()
+    elif self.transition == '=':
       pass
     elif self.transition == '+':
       pass
@@ -282,7 +311,18 @@ class Automata:
       self.goto("state6")
 
   def state10(self):
-    if self.transition == '=':
+    if self.lastAct == "reduce":
+      if self.stack[-1] == 'S':
+        pass
+      elif self.stack[-1] == 'E':
+        pass
+      elif self.stack[-1] == 'V':
+        self.state15()
+      elif self.stack[-1] == 'T':
+        self.state17()
+      elif self.stack[-1] == 'F':
+        self.state6()
+    elif self.transition == '=':
       pass
     elif self.transition == '+':
       pass
@@ -310,7 +350,18 @@ class Automata:
       self.goto("state6")
 
   def state11(self):
-    if self.transition == '=':
+    if self.lastAct == "reduce":
+      if self.stack[-1] == 'S':
+        pass
+      elif self.stack[-1] == 'E':
+        self.state18()
+      elif self.stack[-1] == 'V':
+        self.state15()
+      elif self.stack[-1] == 'T':
+        self.state4()
+      elif self.stack[-1] == 'F':
+        self.state6()
+    elif self.transition == '=':
       pass
     elif self.transition == '+':
       pass
@@ -340,7 +391,18 @@ class Automata:
       self.goto("state6")
 
   def state12(self):
-    if self.transition == '=':
+    if self.lastAct == "reduce":
+      if self.stack[-1] == 'S':
+        pass
+      elif self.stack[-1] == 'E':
+        pass
+      elif self.stack[-1] == 'V':
+        self.state15()
+      elif self.stack[-1] == 'T':
+        pass
+      elif self.stack[-1] == 'F':
+        self.state19()
+    elif self.transition == '=':
       pass
     elif self.transition == '+':
       pass
@@ -366,7 +428,18 @@ class Automata:
       self.goto("state19")
 
   def state13(self):
-    if self.transition == '=':
+    if self.lastAct == "reduce":
+      if self.stack[-1] == 'S':
+        pass
+      elif self.stack[-1] == 'E':
+        pass
+      elif self.stack[-1] == 'V':
+        self.state15()
+      elif self.stack[-1] == 'T':
+        pass
+      elif self.stack[-1] == 'F':
+        self.state20()
+    elif self.transition == '=':
       pass
     elif self.transition == '+':
       pass
@@ -614,24 +687,30 @@ class Automata:
         self.state21()
 
   def run(self):
-        self.currentStates= {'state0'}
-        self.transition =''
-        self.stack='$'
-        self.posicaoFita= 0
-        print(f"fita: {self.fita}")
+    self.currentStates = {'state0'}
+    self.transition = ''
+    self.stack = ['$']
+    self.posicaoFita = 0
+    print(f"fita: {self.fita}")
 
-        while self.posicaoFita < len(self.fita):
-          self.transition = self.fita[self.posicaoFita]
-          print(f"posicaoFita: {self.posicaoFita}")
-          print(f"currentStates: {self.currentStates}")
-          print(f"transition: {self.transition}")
-          print(f"stack: {self.stack}")
-          self.execActiveNodes()
-          if len(self.nextStates) == 0:
-            break
-          self.currentStates = self.nextStates.copy()
-          self.nextStates.clear()
-        self.execActiveNodes()
+    while self.posicaoFita < len(self.fita):
+      self.transition = self.fita[self.posicaoFita]
+      # print(f"posicaoFita: {self.posicaoFita}")
+      # print(f"currentStates: {self.currentStates}")
+      # print(f"transition: {self.transition}")
+      # print(f"stack: {self.stack}")
+      # print(f"last act: {self.lastAct}")
+      self.execActiveNodes()
+      if len(self.nextStates) == 0:
+        break
+      self.currentStates = self.nextStates.copy()
+      self.nextStates.clear()
+
+    if 'accept' in self.currentStates:
+      print("OK")
+    else:
+      print("NÃO OK")
+    # self.execActiveNodes()
 
 
 terminais = ["num", "id", "+", "-", "*", "/", "=", "(", ")"]

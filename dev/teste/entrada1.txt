@@ -1,1 +1,1 @@
-id = id ∗ id + num
+id = id * id + num
