@@ -694,13 +694,12 @@ class Automata:
     print(f"fita: {self.fita}")
 
     while self.posicaoFita < len(self.fita):
-      print("-----------------------------------------")
       self.transition = self.fita[self.posicaoFita]
-      print(f"posicaoFita: {self.posicaoFita}")
-      print(f"currentStates: {self.currentStates}")
-      print(f"transition: {self.transition}")
-      print(f"stack: {self.stack}")
-      print(f"last act: {self.lastAct}")
+      # print(f"posicaoFita: {self.posicaoFita}")
+      # print(f"currentStates: {self.currentStates}")
+      # print(f"transition: {self.transition}")
+      # print(f"stack: {self.stack}")
+      # print(f"last act: {self.lastAct}")
       self.execActiveNodes()
       if len(self.nextStates) == 0:
         break
@@ -721,7 +720,7 @@ def main():
   data1 = txt_file1.read()
   print("entrada1.txt")
 
-  automata = Automata("id = ( id ) + num")
+  automata = Automata(data1)
   automata.run()
 
 
