@@ -43,7 +43,9 @@ class Automata:
       last = self.stack.pop()
       if last == c[0]:
         c.pop(0)
-    
+      # print(f"stack:{self.stack}")
+      # print(f"c:{c}")
+
     self.nextStates.add(f"state{self.stack[-1]}")
     self.stack.append(b)
 
@@ -178,7 +180,7 @@ class Automata:
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      self.reducer("T -> V")
+      self.reducer("T -> F")
 
   def state4(self):
     if self.lastAct == "reduce":
@@ -236,7 +238,7 @@ class Automata:
     elif self.transition == '-':
       self.reducer("E -> T")
     elif self.transition == '/':
-      pass
+      self.shifter(14)
     elif self.transition == '=':
       pass
     elif self.transition == 'id':
@@ -850,15 +852,16 @@ class Automata:
       print("NÃO OK")
     # self.execActiveNodes()
 
-terminais = ["num", "id", "+", "-", "*", "/", "=", "(", ")"]
+# terminais = ["num", "id", "+", "-", "*", "/", "=", "(", ")"]
 
 def main():
   txt_file1 = open("./teste/entrada1.txt","r")
   data1 = txt_file1.read()
   print("entrada1.txt")
 
-  automata = Automata(data1)
+  # automata = Automata(data1)
   # automata = Automata("id = ( id ) + num")
+  automata = Automata("id = ( num + num ) / num")
   automata.run()
 
 
