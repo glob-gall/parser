@@ -36,16 +36,13 @@ class Automata:
   def reducer(self,to: str):
     self.lastAct = "reduce"
     aux = to.split()
-    b = str(aux[0])
+    b = aux[0]
     c = aux[2:]
-    self.flagB = False
-    
-    self.stack.pop()
-    print(f"aux:{aux}")
-    print(f"C:{c}")
-    for i in range(len(c)):
+    c.reverse()
+    while(len(c) != 0):
       last = self.stack.pop()
-      print(f"i:{c[-i]},l:{last}")
+      if last == c[0]:
+        c.pop(0)
     
     self.nextStates.add(f"state{self.stack[-1]}")
     self.stack.append(b)
@@ -165,15 +162,15 @@ class Automata:
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      self.reducer("T -> V")
+      self.reducer("T -> F")
     elif self.transition == '*':
-      self.reducer("T -> V")
+      self.reducer("T -> F")
     elif self.transition == '+':
-      self.reducer("T -> V")
+      self.reducer("T -> F")
     elif self.transition == '-':
-      self.reducer("T -> V")
+      self.reducer("T -> F")
     elif self.transition == '/':
-      self.reducer("T -> V")
+      self.reducer("T -> F")
     elif self.transition == '=':
       pass
     elif self.transition == 'id':
@@ -594,15 +591,15 @@ class Automata:
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      self.reducer("F -> (E)")
+      self.reducer("F -> ( E )")
     elif self.transition == '*':
-      self.reducer("F -> (E)")
+      self.reducer("F -> ( E )")
     elif self.transition == '+':
-      self.reducer("F -> (E)")
+      self.reducer("F -> ( E )")
     elif self.transition == '-':
-      self.reducer("F -> (E)")
+      self.reducer("F -> ( E )")
     elif self.transition == '/':
-      self.reducer("F -> (E)")
+      self.reducer("F -> ( E )")
     elif self.transition == '=':
       pass
     elif self.transition == 'id':
@@ -610,7 +607,7 @@ class Automata:
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      self.reducer("F -> (E)")
+      self.reducer("F -> ( E )")
 
   def state17(self):
     if self.lastAct == "reduce":
@@ -627,13 +624,13 @@ class Automata:
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      self.reducer("E -> E+T")
+      self.reducer("E -> E + T")
     elif self.transition == '*':
       self.shifter(13)
     elif self.transition == '+':
-      self.reducer("E -> E+T")
+      self.reducer("E -> E + T")
     elif self.transition == '-':
-      self.reducer("E -> E+T")
+      self.reducer("E -> E + T")
     elif self.transition == '/':
       self.shifter(14)
     elif self.transition == '=':
@@ -643,7 +640,7 @@ class Automata:
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      self.reducer("E -> E+T")
+      self.reducer("E -> E + T")
 
   def state18(self):
     if self.lastAct == "reduce":
@@ -660,13 +657,13 @@ class Automata:
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      self.reducer("E -> E-T")
+      self.reducer("E -> E - T")
     elif self.transition == '*':
       self.shifter(13)
     elif self.transition == '+':
-      self.reducer("E -> E-T")
+      self.reducer("E -> E - T")
     elif self.transition == '-':
-      self.reducer("E -> E-T")
+      self.reducer("E -> E - T")
     elif self.transition == '/':
       self.shifter(14)
     elif self.transition == '=':
@@ -676,7 +673,7 @@ class Automata:
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      self.reducer("E -> E-T")
+      self.reducer("E -> E - T")
 
   def state19(self):
     if self.lastAct == "reduce":
@@ -693,15 +690,15 @@ class Automata:
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      self.reducer("T -> T*F")
+      self.reducer("T -> T * F")
     elif self.transition == '*':
-      self.reducer("T -> T*F")
+      self.reducer("T -> T * F")
     elif self.transition == '+':
-      self.reducer("T -> T*F")
+      self.reducer("T -> T * F")
     elif self.transition == '-':
-      self.reducer("T -> T*F")
+      self.reducer("T -> T * F")
     elif self.transition == '/':
-      self.reducer("T -> T*F")
+      self.reducer("T -> T * F")
     elif self.transition == '=':
       pass
     elif self.transition == 'id':
@@ -709,7 +706,7 @@ class Automata:
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      self.reducer("T -> T*F")
+      self.reducer("T -> T * F")
 
   def state20(self):
     if self.lastAct == "reduce":
@@ -726,15 +723,15 @@ class Automata:
     elif self.transition == '(':
       pass
     elif self.transition == ')':
-      self.reducer("T -> T/F")
+      self.reducer("T -> T / F")
     elif self.transition == '*':
-      self.reducer("T -> T/F")
+      self.reducer("T -> T / F")
     elif self.transition == '+':
-      self.reducer("T -> T/F")
+      self.reducer("T -> T / F")
     elif self.transition == '-':
-      self.reducer("T -> T/F")
+      self.reducer("T -> T / F")
     elif self.transition == '/':
-      self.reducer("T -> T/F")
+      self.reducer("T -> T / F")
     elif self.transition == '=':
       pass
     elif self.transition == 'id':
@@ -742,7 +739,7 @@ class Automata:
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      self.reducer("T -> T/F")
+      self.reducer("T -> T / F")
 
   def state21(self):
     if self.lastAct == "reduce":
@@ -775,7 +772,7 @@ class Automata:
     elif self.transition == 'num':
       pass
     elif self.transition == '$':
-      self.reducer("S -> V=E")
+      self.reducer("S -> V = E")
 
   def execActiveNodes(self):
     if 'state0' in self.currentStates:
