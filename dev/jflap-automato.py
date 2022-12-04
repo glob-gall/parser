@@ -835,24 +835,16 @@ class Automata:
       self.execActiveNodes()
       print("----------------------------------------------------------------------------------------------------")
       print(f"{self.stack}        {self.fita[self.posicaoFita:]}      {self.lastAct}      {self.currentStates}",'')
-      # print(f"currentStates: {self.currentStates}")
-      # print(f"fita: {self.fita[self.posicaoFita:]}")
-      # print(f"transition: {self.transition}")
-      # print(f"stack: {self.stack}")
-      # print(f"last act: {self.lastAct}")
       if len(self.nextStates) == 0:
         break
       self.currentStates = self.nextStates.copy()
-      # print(f"next state: {self.nextStates}")
       self.nextStates.clear()
 
     if 'accept' in self.currentStates:
       print("OK")
     else:
       print("NÃO OK")
-    # self.execActiveNodes()
 
-# terminais = ["num", "id", "+", "-", "*", "/", "=", "(", ")"]
 
 def main():
   txt_file1 = open("./teste/entrada1.txt","r")
@@ -861,7 +853,7 @@ def main():
 
   # automata = Automata(data1)
   # automata = Automata("id = ( id ) + num")
-  automata = Automata("id = ( num + num ) / num")
+  automata = Automata("id = id + (")
   automata.run()
 
 
